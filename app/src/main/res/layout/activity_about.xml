@@ -20,11 +20,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/bckBtn"
+            android:id="@+id/bckBtnAbout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:onClick="end"
+            android:onClick="endAbout"
             android:padding="3dp"
             android:tint="@color/white"
             app:layout_constraintStart_toStartOf="parent"

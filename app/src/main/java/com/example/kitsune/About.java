@@ -104,4 +104,8 @@ public class About extends AppCompatActivity {
         Intent intent= new Intent(Intent.ACTION_VIEW,uri);
         startActivity(intent);
     }
+
+    public void endAbout(View v){
+        finish();
+    }
 }
