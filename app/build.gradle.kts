@@ -10,8 +10,8 @@ android {
         applicationId = "com.example.kitsune"
         minSdk = 31
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.1.0"
+        versionCode = 3
+        versionName = "1.2.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -40,6 +40,7 @@ dependencies {
 
 }
 dependencies {
+    implementation(libs.volley)
     val work_version = "2.9.0"
     implementation("androidx.cardview:cardview:1.0.0")
     // (Java only)

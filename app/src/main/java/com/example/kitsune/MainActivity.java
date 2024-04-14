@@ -1,7 +1,6 @@
 package com.example.kitsune;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -16,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -78,9 +76,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int id = menuItem.getItemId();
-                if(id == R.id.timetable){
+                if(id == R.id.timetableMenu){
                     Intent timetable = new Intent(MainActivity.this, TimeTable.class);
                     startActivity(timetable);
+                }
+                if(id == R.id.aboutMenu){
+                    Intent about = new Intent(MainActivity.this, About.class);
+                    startActivity(about);
                 }
                 drawerLayout.close();
                 return false;
