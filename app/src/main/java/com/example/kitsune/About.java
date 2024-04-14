@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +38,7 @@ public class About extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        TextView versionDisplay = findViewById(R.id.versionDisplay);
+        Button versionDisplay = findViewById(R.id.versionDisplay);
         PackageManager manager = this.getPackageManager();
         PackageInfo info = null;
         try {
@@ -61,7 +62,7 @@ public class About extends AppCompatActivity {
                 }
                 if(!latest.equalsIgnoreCase("v"+version)){
                     dialog(latest);
-                }
+                }else Toast.makeText(About.this,"No updates found.",Toast.LENGTH_SHORT).show();
             }
 
         }, new Response.ErrorListener() {
