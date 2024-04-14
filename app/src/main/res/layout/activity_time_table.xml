@@ -8,6 +8,41 @@
     android:background="@color/bg"
     tools:context=".TimeTable">
 
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/bckBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:onClick="end"
+            android:padding="3dp"
+            android:tint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_arrow_back_24" />
+
+    </Toolbar>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:fontFamily="casual"
+        android:text="Kitsune"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintStart_toStartOf="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="@+id/toolbar" />
     <Button
         android:id="@+id/add_slot"
         android:layout_width="wrap_content"
@@ -24,13 +59,13 @@
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="32dp"
         android:gravity="bottom"
         android:text="Enter Couse:"
         android:textColor="#FFFFFF"
         android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
         android:id="@+id/slotT"
@@ -63,15 +98,16 @@
         android:layout_width="180dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:gravity="bottom"
+        android:hint="CSE1001"
         android:inputType="text"
-        android:text="CSE1001"
         android:textColor="#FFFFFF"
+        android:textColorHint="#DAD0D0"
         android:textSize="18dp"
         app:layout_constraintStart_toEndOf="@+id/courseT"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <EditText
         android:id="@+id/venue"
@@ -81,9 +117,10 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:gravity="bottom"
+        android:hint="AB1-303"
         android:inputType="text"
-        android:text="AB1-303"
         android:textColor="#FFFFFF"
+        android:textColorHint="#DAD0D0"
         android:textSize="18dp"
         app:layout_constraintStart_toEndOf="@+id/roomT"
         app:layout_constraintTop_toBottomOf="@+id/course" />
@@ -96,9 +133,10 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:gravity="bottom"
+        android:hint="A1+TA1+TAA1"
         android:inputType="text"
-        android:text="A1+TA1+TAA1"
         android:textColor="#FFFFFF"
+        android:textColorHint="#DAD0D0"
         android:textSize="18dp"
         app:layout_constraintStart_toEndOf="@+id/slotT"
         app:layout_constraintTop_toBottomOf="@+id/venue" />
@@ -130,25 +168,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
+        android:hint="Enter slot to delete."
         android:inputType="text"
-        android:text="Enter slot to delete"
         android:textColor="#FFFFFF"
+        android:textColorHint="#DAD0D0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lvSlots" />
 
-    <ImageButton
-        android:id="@+id/bckBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="30dp"
-        android:background="@android:color/transparent"
-        android:onClick="end"
-        android:padding="10dp"
-        android:tint="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_arrow_back_24" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
