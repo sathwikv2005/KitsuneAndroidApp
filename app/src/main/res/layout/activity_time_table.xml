@@ -1,237 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
+<ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
-    tools:context=".TimeTable">
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <?xml version="1.0" encoding="utf-8"?>
 
-    <Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/header"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg"
+            tools:context=".TimeTable">
 
-        <ImageButton
-            android:id="@+id/bckBtnAttendance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:onClick="end"
-            android:padding="3dp"
-            android:tint="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/baseline_arrow_back_24" />
+            <Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/header"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    </Toolbar>
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:fontFamily="casual"
-        android:text="Time Table"
-        android:textColor="#FFFFFF"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        app:layout_constraintStart_toStartOf="@+id/toolbar"
-        app:layout_constraintTop_toTopOf="@+id/toolbar" />
+                <ImageButton
+                    android:id="@+id/bckBtnAttendance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:onClick="end"
+                    android:padding="3dp"
+                    android:tint="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/baseline_arrow_back_24" />
 
-    <Button
-        android:id="@+id/add_slot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:onClick="addSlot"
-        android:text="Add"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/present" />
+            </Toolbar>
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:fontFamily="casual"
+                android:text="Time Table"
+                android:textColor="#FFFFFF"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+                app:layout_constraintStart_toStartOf="@+id/toolbar"
+                app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
-    <TextView
-        android:id="@+id/courseT"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="32dp"
-        android:gravity="bottom"
-        android:text="Couse Title:"
-        android:textColor="#FFFFFF"
-        android:textSize="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+            <Button
+                android:id="@+id/add_slot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:onClick="addSlot"
+                android:text="Add"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/present" />
 
-    <TextView
-        android:id="@+id/slotT"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="16dp"
-        android:gravity="bottom"
-        android:text="Enter slot:"
-        android:textColor="#FFFFFF"
-        android:textSize="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/roomT" />
+            <TextView
+                android:id="@+id/courseT"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="32dp"
+                android:gravity="bottom"
+                android:text="Couse Title:"
+                android:textColor="#FFFFFF"
+                android:textSize="25dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-    <TextView
-        android:id="@+id/roomT"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="16dp"
-        android:gravity="bottom"
-        android:text="Enter venue:"
-        android:textColor="#FFFFFF"
-        android:textSize="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/courseT" />
+            <TextView
+                android:id="@+id/slotT"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="16dp"
+                android:gravity="bottom"
+                android:text="Enter slot:"
+                android:textColor="#FFFFFF"
+                android:textSize="25dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/roomT" />
 
-    <EditText
-        android:id="@+id/course"
-        android:layout_width="180dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:gravity="bottom"
-        android:hint="CSE1001"
-        android:inputType="text"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#DAD0D0"
-        android:textSize="18dp"
-        app:layout_constraintStart_toEndOf="@+id/courseT"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+            <TextView
+                android:id="@+id/roomT"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="16dp"
+                android:gravity="bottom"
+                android:text="Enter venue:"
+                android:textColor="#FFFFFF"
+                android:textSize="25dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/courseT" />
 
-    <EditText
-        android:id="@+id/venue"
-        android:layout_width="180dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:gravity="bottom"
-        android:hint="AB1-303"
-        android:inputType="text"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#DAD0D0"
-        android:textSize="18dp"
-        app:layout_constraintStart_toEndOf="@+id/roomT"
-        app:layout_constraintTop_toBottomOf="@+id/course" />
+            <EditText
+                android:id="@+id/course"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="40dp"
+                android:ems="10"
+                android:gravity="bottom"
+                android:hint="CSE1001"
+                android:inputType="text"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#DAD0D0"
+                android:textSize="18dp"
+                app:layout_constraintStart_toEndOf="@+id/courseT"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-    <EditText
-        android:id="@+id/slot"
-        android:layout_width="180dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:gravity="bottom"
-        android:hint="A1+TA1+TAA1"
-        android:inputType="text"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#DAD0D0"
-        android:textSize="18dp"
-        app:layout_constraintStart_toEndOf="@+id/slotT"
-        app:layout_constraintTop_toBottomOf="@+id/venue" />
+            <EditText
+                android:id="@+id/venue"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:gravity="bottom"
+                android:hint="AB1-303"
+                android:inputType="text"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#DAD0D0"
+                android:textSize="18dp"
+                app:layout_constraintStart_toEndOf="@+id/roomT"
+                app:layout_constraintTop_toBottomOf="@+id/course" />
 
-    <ListView
-        android:id="@+id/lvSlots"
-        android:layout_width="380dp"
-        android:layout_height="250dp"
-        android:layout_marginTop="25dp"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_slot" />
+            <EditText
+                android:id="@+id/slot"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:gravity="bottom"
+                android:hint="A1+TA1+TAA1"
+                android:inputType="text"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#DAD0D0"
+                android:textSize="18dp"
+                app:layout_constraintStart_toEndOf="@+id/slotT"
+                app:layout_constraintTop_toBottomOf="@+id/venue" />
 
-    <Button
-        android:id="@+id/delSlotBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:onClick="delSlot"
-        android:text="Delete a slot"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/delSlot" />
+            <ListView
+                android:id="@+id/lvSlots"
+                android:layout_width="380dp"
+                android:layout_height="250dp"
+                android:layout_marginTop="25dp"
+                android:textColor="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_slot" />
 
-    <EditText
-        android:id="@+id/delSlot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Enter slot to delete."
-        android:inputType="text"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#DAD0D0"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lvSlots" />
+            <Button
+                android:id="@+id/delSlotBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:onClick="delSlot"
+                android:text="Delete a slot"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/delSlot" />
 
-    <TextView
-        android:id="@+id/total_classesT"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="16dp"
-        android:gravity="bottom"
-        android:text="Total classes:"
-        android:textColor="#FFFFFF"
-        android:textSize="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slotT" />
+            <EditText
+                android:id="@+id/delSlot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:hint="Enter slot to delete."
+                android:inputType="text"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#DAD0D0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lvSlots" />
 
-    <EditText
-        android:id="@+id/total_classes"
-        android:layout_width="180dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="0"
-        android:inputType="text"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#DAD0D0"
-        android:textSize="18dp"
-        app:layout_constraintStart_toEndOf="@+id/total_classesT"
-        app:layout_constraintTop_toBottomOf="@+id/slot" />
+            <TextView
+                android:id="@+id/total_classesT"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="16dp"
+                android:gravity="bottom"
+                android:text="Total classes:"
+                android:textColor="#FFFFFF"
+                android:textSize="25dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/slotT" />
 
-    <TextView
-        android:id="@+id/presentT"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="16dp"
-        android:gravity="bottom"
-        android:text="Present:"
-        android:textColor="#FFFFFF"
-        android:textSize="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/total_classesT" />
+            <EditText
+                android:id="@+id/total_classes"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="0"
+                android:inputType="text"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#DAD0D0"
+                android:textSize="18dp"
+                app:layout_constraintStart_toEndOf="@+id/total_classesT"
+                app:layout_constraintTop_toBottomOf="@+id/slot" />
 
-    <EditText
-        android:id="@+id/present"
-        android:layout_width="180dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="0"
-        android:inputType="text"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#DAD0D0"
-        android:textSize="18dp"
-        app:layout_constraintStart_toEndOf="@+id/presentT"
-        app:layout_constraintTop_toBottomOf="@+id/total_classes" />
+            <TextView
+                android:id="@+id/presentT"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="16dp"
+                android:gravity="bottom"
+                android:text="Present:"
+                android:textColor="#FFFFFF"
+                android:textSize="25dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/total_classesT" />
+
+            <EditText
+                android:id="@+id/present"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="0"
+                android:inputType="text"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#DAD0D0"
+                android:textSize="18dp"
+                app:layout_constraintStart_toEndOf="@+id/presentT"
+                app:layout_constraintTop_toBottomOf="@+id/total_classes" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
