@@ -68,7 +68,9 @@ public class TimeTable extends AppCompatActivity {
             if(addToDB) Toast.makeText(TimeTable.this,"Successfully Added",Toast.LENGTH_SHORT).show();
             else Toast.makeText(TimeTable.this,"An error occurred, Try again later",Toast.LENGTH_SHORT).show();
         }
-        boolean addToDB = aDB.addCourse(course,totalClasses,present);
+        boolean lab = false;
+        if(slotET.getText().toString().toUpperCase().contains("L")) lab = true;
+        boolean addToDB = aDB.addCourse(course,totalClasses,present,lab);
         if(!addToDB) Toast.makeText(TimeTable.this,"An error occurred when trying to add attendance, Try again later",Toast.LENGTH_SHORT).show();
         updatePage();
 

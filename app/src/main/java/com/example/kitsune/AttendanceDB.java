@@ -20,7 +20,8 @@ public class AttendanceDB extends SQLiteOpenHelper {
         db.execSQL("drop Table if exists Attendance");
     }
 
-    public boolean addCourse(String course,int total_classes, int present){
+    public boolean addCourse(String course,int total_classes, int present, boolean lab){
+        if(lab) course = course.toUpperCase() + " (LAB)";
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("course", course.toUpperCase());
