@@ -5,13 +5,17 @@
         android:id="@+id/timetableMenu"
         android:title="Time Table"
         android:icon="@drawable/baseline_calendar_today_24"/>
+        <item
+            android:id="@+id/attendanceMenu"
+            android:title="Attendance"
+            android:icon="@drawable/baseline_man_24"/>
     </group>
     <group
         android:id="@+id/aboutGroup">
     <item
         android:id="@+id/aboutMenu"
         android:title="About"
-        android:icon="@drawable/baseline_description_24"/>
+        android:icon="@drawable/baseline_info_outline_24"/>
     </group>
 
 </menu>

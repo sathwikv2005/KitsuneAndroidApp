@@ -10,8 +10,8 @@ android {
         applicationId = "com.example.kitsune"
         minSdk = 31
         targetSdk = 34
-        versionCode = 3
-        versionName = "1.2.2"
+        versionCode = 4
+        versionName = "1.3.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -43,7 +43,7 @@ dependencies {
     implementation(libs.volley)
     val work_version = "2.9.0"
     implementation("androidx.cardview:cardview:1.0.0")
-    // (Java only)
     implementation("androidx.work:work-runtime:$work_version")
+    implementation("com.loopj.android:android-async-http:1.4.11")
 
 }

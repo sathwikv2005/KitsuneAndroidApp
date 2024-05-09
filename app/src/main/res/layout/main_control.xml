@@ -45,6 +45,7 @@
         app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/upComingClassCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -54,6 +55,7 @@
         android:outlineAmbientShadowColor="#C82E2E"
         android:outlineSpotShadowColor="#FF0000"
         android:padding="16dp"
+        android:visibility="visible"
         app:cardBackgroundColor="#D5C9C9"
         app:cardCornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"

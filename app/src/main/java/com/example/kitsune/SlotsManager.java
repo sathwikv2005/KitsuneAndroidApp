@@ -1,6 +1,7 @@
 package com.example.kitsune;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -68,6 +69,7 @@ public class SlotsManager {
         String[] labSlots = getLabSlots()[day];
         DBManager db = new DBManager(context);
         String[] enrolled = db.getData();
+        if(enrolled.length == 0) return "-1";
         int[] enrolledETH = classesForToday(enrolled,slots);
         int[] enrolledEla = classesForToday(enrolled,labSlots);
         String result = "";
@@ -93,7 +95,7 @@ public class SlotsManager {
                 result += toadd + ", At " + time + "\n";
             }
         }
-        return result.isEmpty() ? "No upcoming classes." : result;
+        return result.isEmpty() ? "No upcoming classes for today." : result;
     }
 
     public int[] classesForToday(String[] enrolled,String[] slots){

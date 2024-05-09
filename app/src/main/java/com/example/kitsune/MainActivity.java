@@ -19,6 +19,7 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
@@ -53,12 +54,98 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        //Check and ask for notification permission if not enabled.
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
             if(ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED){
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS},101);
             }
         }
 
+
+        createBurgerMenu(); //Burger Menu
+
+        updateUpcomingClassesCard(); //Update upcoming class display card
+
+
+    }
+    protected void onResume() {
+        super.onResume();
+
+        updateUpcomingClassesCard(); //UpcomingClassDisplay
+
+        firstRun(); //First Run
+    }
+
+    void updateUpcomingClassesCard(){
+        TextView upcomingClassDisplay = findViewById(R.id.UpcomingClassDisplay);
+        CardView upcomingClassCard = findViewById(R.id.upComingClassCard);
+        SlotsManager slotsManager = new SlotsManager();
+        String upcomingClasses = slotsManager.getUpcomingClass(this);
+        if(!upcomingClasses.equalsIgnoreCase("-1")){
+            upcomingClassCard.setVisibility(View.VISIBLE);
+            upcomingClassDisplay.setText(upcomingClasses);
+        }
+        else {
+            upcomingClassCard.setVisibility(View.GONE);
+        }
+    }
+
+    void firstRun(){
+        if (prefs.getBoolean("firstRun", true)) {
+            setUpPeriodicWorkRequest();
+        }
+    }
+
+    void setUpPeriodicWorkRequest(){
+        LocalDateTime now = LocalDateTime.now();
+        int min = now.getMinute();
+        if(min%15 != 0){
+            int reminder = min%15;
+            min = 15-reminder;
+        }
+        PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(UpcomingClassCheck.class,15, TimeUnit.MINUTES).setInitialDelay(min,TimeUnit.MINUTES).build();
+
+        WorkManager.getInstance(MainActivity.this).enqueue(periodicWorkRequest);
+        prefs.edit().putBoolean("firstRun", false).commit();
+        Log.d("KitsuneLog","firstRun occurred");
+        /*
+         * Notification
+         */
+        String channelID = "ClassReminders";
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this.getApplicationContext(), channelID);
+        Intent ii = new Intent(this.getApplicationContext(),MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 10, ii, PendingIntent.FLAG_IMMUTABLE);
+
+        NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
+        bigText.bigText("Initial setup complete"); //detail mode is the "expanded" notification
+        bigText.setBigContentTitle("Initial setup complete");
+
+        mBuilder.setContentIntent(pendingIntent);
+        mBuilder.setSmallIcon(R.mipmap.ic_launcher); //notification icon
+        mBuilder.setContentTitle("Initial setup complete"); //main title
+        mBuilder.setContentText("Initial setup complete"); //main text when you "haven't expanded" the notification yet
+        mBuilder.setPriority(NotificationManager.IMPORTANCE_LOW);
+        mBuilder.setStyle(bigText);
+
+        NotificationManager mNotificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        NotificationChannel channel = new NotificationChannel(channelID,
+                "Class reminder",
+                NotificationManager.IMPORTANCE_DEFAULT);
+        if (mNotificationManager != null) {
+            mNotificationManager.createNotificationChannel(channel);
+        }
+
+        if (mNotificationManager != null) {
+            mNotificationManager.notify(10, mBuilder.build());
+        }
+            /*
+                Notification
+             */
+    }
+
+    void createBurgerMenu(){
         prefs = getSharedPreferences("Kitsune", MODE_PRIVATE);
 
         drawerLayout = findViewById(R.id.main);
@@ -80,6 +167,10 @@ public class MainActivity extends AppCompatActivity {
                     Intent timetable = new Intent(MainActivity.this, TimeTable.class);
                     startActivity(timetable);
                 }
+                if(id == R.id.attendanceMenu){
+                    Intent attendance = new Intent(MainActivity.this, Attendance.class);
+                    startActivity(attendance);
+                }
                 if(id == R.id.aboutMenu){
                     Intent about = new Intent(MainActivity.this, About.class);
                     startActivity(about);
@@ -88,64 +179,5 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-        //UpcomingClassDisplay
-        TextView upcomingClassDisplay = findViewById(R.id.UpcomingClassDisplay);
-        SlotsManager slotsManager = new SlotsManager();
-        String upcomingClasses = slotsManager.getUpcomingClass(this);
-        Log.d("KitsuneLog",upcomingClasses);
-        upcomingClassDisplay.setText(upcomingClasses);
-
-    }
-    protected void onResume() {
-        super.onResume();
-
-        if (prefs.getBoolean("firstRun", true)) {
-            LocalDateTime now = LocalDateTime.now();
-            int min = now.getMinute();
-            if(min%15 != 0){
-                int reminder = min%15;
-                min = 15-reminder;
-            }
-            PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(UpcomingClassCheck.class,15, TimeUnit.MINUTES).setInitialDelay(min,TimeUnit.MINUTES).build();
-
-            WorkManager.getInstance(MainActivity.this).enqueue(periodicWorkRequest);
-            prefs.edit().putBoolean("firstRun", false).commit();
-            Log.d("KitsuneLog","firstRun occurred");
-            /*
-             * Notification
-             */
-            String channelID = "ClassReminders";
-            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this.getApplicationContext(), channelID);
-            Intent ii = new Intent(this.getApplicationContext(),MainActivity.class);
-            PendingIntent pendingIntent = PendingIntent.getActivity(this, 10, ii, PendingIntent.FLAG_IMMUTABLE);
-
-            NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
-            bigText.bigText("Initial setup complete"); //detail mode is the "expanded" notification
-            bigText.setBigContentTitle("Initial setup complete");
-
-            mBuilder.setContentIntent(pendingIntent);
-            mBuilder.setSmallIcon(R.mipmap.hu_tao); //notification icon
-            mBuilder.setContentTitle("Initial setup complete"); //main title
-            mBuilder.setContentText("Initial setup complete"); //main text when you "haven't expanded" the notification yet
-            mBuilder.setPriority(NotificationManager.IMPORTANCE_LOW);
-            mBuilder.setStyle(bigText);
-
-            NotificationManager mNotificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-
-            NotificationChannel channel = new NotificationChannel(channelID,
-                    "Class reminder",
-                    NotificationManager.IMPORTANCE_DEFAULT);
-            if (mNotificationManager != null) {
-                mNotificationManager.createNotificationChannel(channel);
-            }
-
-            if (mNotificationManager != null) {
-                mNotificationManager.notify(10, mBuilder.build());
-            }
-            /*
-                Notification
-             */
-        }
     }
 }

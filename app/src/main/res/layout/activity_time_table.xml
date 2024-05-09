@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/bckBtnAbout"
+            android:id="@+id/bckBtnAttendance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
@@ -43,6 +43,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintStart_toStartOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
     <Button
         android:id="@+id/add_slot"
         android:layout_width="wrap_content"
@@ -52,7 +53,7 @@
         android:text="Add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slot" />
+        app:layout_constraintTop_toBottomOf="@+id/present" />
 
     <TextView
         android:id="@+id/courseT"
@@ -61,7 +62,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="32dp"
         android:gravity="bottom"
-        android:text="Enter Couse:"
+        android:text="Couse Title:"
         android:textColor="#FFFFFF"
         android:textSize="25dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,8 +144,8 @@
 
     <ListView
         android:id="@+id/lvSlots"
-        android:layout_width="406dp"
-        android:layout_height="300dp"
+        android:layout_width="380dp"
+        android:layout_height="250dp"
         android:layout_marginTop="25dp"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
@@ -176,6 +177,61 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lvSlots" />
 
+    <TextView
+        android:id="@+id/total_classesT"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"
+        android:gravity="bottom"
+        android:text="Total classes:"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slotT" />
+
+    <EditText
+        android:id="@+id/total_classes"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="0"
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#DAD0D0"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/total_classesT"
+        app:layout_constraintTop_toBottomOf="@+id/slot" />
+
+    <TextView
+        android:id="@+id/presentT"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"
+        android:gravity="bottom"
+        android:text="Present:"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/total_classesT" />
+
+    <EditText
+        android:id="@+id/present"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="0"
+        android:inputType="text"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#DAD0D0"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/presentT"
+        app:layout_constraintTop_toBottomOf="@+id/total_classes" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

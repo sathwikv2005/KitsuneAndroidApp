@@ -38,7 +38,7 @@ public class StartUpReceiver extends BroadcastReceiver {
             bigText.setBigContentTitle("Initial setup complete");
 
             mBuilder.setContentIntent(pendingIntent);
-            mBuilder.setSmallIcon(R.mipmap.hu_tao); //notification icon
+            mBuilder.setSmallIcon(R.mipmap.ic_launcher); //notification icon
             mBuilder.setContentTitle("Initial setup complete"); //main title
             mBuilder.setContentText("Initial setup complete"); //main text when you "haven't expanded" the notification yet
             mBuilder.setPriority(NotificationManager.IMPORTANCE_LOW);
