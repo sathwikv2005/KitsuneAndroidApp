@@ -1,6 +1,5 @@
 package com.example.kitsune;
 
-import static androidx.appcompat.graphics.drawable.DrawableContainerCompat.Api21Impl.getResources;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
