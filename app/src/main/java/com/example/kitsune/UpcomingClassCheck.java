@@ -1,11 +1,14 @@
 package com.example.kitsune;
 
+import static androidx.appcompat.graphics.drawable.DrawableContainerCompat.Api21Impl.getResources;
+
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -82,9 +85,11 @@ public class UpcomingClassCheck extends Worker {
         bigText.bigText("Your "+course+" class at "+venue+" Begins shortly"); //detail mode is the "expanded" notification
         bigText.setBigContentTitle(course+" At "+venue);
 
+        mBuilder.setAutoCancel(true);
         mBuilder.setContentIntent(pendingIntent);
-        mBuilder.setSmallIcon(R.mipmap.ic_launcher);
-        mBuilder.setLargeIcon(BitmapFactory.decodeResource(context.getResources(),R.mipmap.ic_launcher));//notification icon
+        mBuilder.setSmallIcon(R.drawable.ic_k_notification);// this is the white image with transparent background
+        mBuilder.setColor(0xFF98652A);
+        mBuilder.setLargeIcon(BitmapFactory.decodeResource(context.getResources(),R.drawable.ic_k_notification));//notification icon
         mBuilder.setContentTitle(course+" At "+venue); //main title
         mBuilder.setContentText("Your "+course+" class at "+venue+" Begins shortly"); //main text when you "haven't expanded" the notification yet
         mBuilder.setPriority(NotificationManager.IMPORTANCE_HIGH);
@@ -100,7 +105,7 @@ public class UpcomingClassCheck extends Worker {
         }
 
         if (mNotificationManager != null) {
-            mNotificationManager.notify(10, mBuilder.build());
+            mNotificationManager.notify(generateUniqueId(slot), mBuilder.build());
         }
         /*
             Notification
@@ -119,6 +124,12 @@ public class UpcomingClassCheck extends Worker {
             if(enrolled[i].split("-")[0].equalsIgnoreCase(slot[0]) || enrolled[i].split("-")[0].equalsIgnoreCase(slot[1])) return i;
         }
         return -1;
+    }
+
+    int generateUniqueId(String slot) {
+        // Generate a unique ID based on current timestamp and slot information
+        String uniqueId = "ClassNotification_" + slot + "_" + System.currentTimeMillis();
+        return uniqueId.hashCode();
     }
 
 

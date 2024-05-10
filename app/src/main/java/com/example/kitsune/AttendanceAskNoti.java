@@ -72,9 +72,11 @@ public class AttendanceAskNoti {
         bigText.bigText("Click here to update your attendance details. Ignore if class was cancelled."); //detail mode is the "expanded" notification
         bigText.setBigContentTitle("Attendance for "+course);
 
+        mBuilder.setAutoCancel(true);
         mBuilder.setContentIntent(pendingIntent);
-        mBuilder.setSmallIcon(R.mipmap.ic_launcher);
-        mBuilder.setLargeIcon(BitmapFactory.decodeResource(context.getResources(),R.mipmap.ic_launcher));//notification icon
+        mBuilder.setSmallIcon(R.drawable.ic_k_notification);// this is the white image with transparent background
+        mBuilder.setColor(0xFF98652A);
+        mBuilder.setLargeIcon(BitmapFactory.decodeResource(context.getResources(),R.drawable.ic_k_notification));//notification icon
         mBuilder.setContentTitle("Attendance for "+course); //main title
         mBuilder.setContentText("Did you attend your "+course+" class at "+venue+"?"); //main text when you "haven't expanded" the notification yet
         mBuilder.setPriority(NotificationManager.IMPORTANCE_HIGH);
@@ -89,7 +91,7 @@ public class AttendanceAskNoti {
         }
 
         if (mNotificationManager != null) {
-            mNotificationManager.notify(10, mBuilder.build());
+            mNotificationManager.notify(generateUniqueId(course), mBuilder.build());
         }
         /*
             Notification
@@ -110,4 +112,11 @@ public class AttendanceAskNoti {
         }
         return -1;
     }
+
+    int generateUniqueId(String slot) {
+        // Generate a unique ID based on current timestamp and slot information
+        String uniqueId = "ClassNotification_" + slot + "_" + System.currentTimeMillis();
+        return uniqueId.hashCode();
+    }
+
 }
